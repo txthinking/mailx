@@ -2,7 +2,7 @@ A command-line tool to send email
 
 ### Install
 ```
-$ go get github.com/txthinking/sendmail
+$ go get github.com/txthinking/xmail/cmd/sendmail
 ```
 
 ### Usage
