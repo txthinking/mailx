@@ -6,8 +6,11 @@ A email library
 ```
 $ go get github.com/txthinking/xmail
 ```
+### Doc
 
-### Usage
+[Doc](https://godoc.org/github.com/txthinking/xmail)
+
+### Example
 
 ```
 package main
