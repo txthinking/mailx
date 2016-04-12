@@ -1,6 +1,6 @@
-## xmail [![GoDoc](https://godoc.org/github.com/txthinking/xmail?status.svg)](https://godoc.org/github.com/txthinking/xmail) [![Build Status](https://drone.io/github.com/txthinking/xmail/status.png)](https://drone.io/github.com/txthinking/xmail/latest)
+## xmail [![GoDoc](https://godoc.org/github.com/txthinking/xmail?status.svg)](https://godoc.org/github.com/txthinking/xmail) [![Build Status](https://drone.io/github.com/txthinking/xmail/status.png)](https://drone.io/github.com/txthinking/xmail/latest) [Binary](https://drone.io/github.com/txthinking/txthinking/files/cmd/sendmail)
 
-A SMTP/mailgun/etc mail library, allow to set a fake from address.
+A SMTP/Mailgun/etc mail library, allow to set a fake from address.
 
 ### Install
 ```
