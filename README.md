@@ -23,26 +23,26 @@ import(
 
 func main(){
     smtp := &xmail.SMTP{
-        Server: "smtp.ym.163.com",
+        Server: "smtp.example.com",
         Port: 25,
-        UserName: "bot@ym.txthinking.com",
+        UserName: "tom@txthinking.com",
         Password: "password",
         IsTLS: false,
     }
 
     from := &mail.Address{
-        Name: "雷锋",
-        Address: "bot@ym.txthinking.com",
+        Name: "Tom",
+        Address: "tom@txthinking.com",
     }
     to := []*mail.Address{
         &mail.Address{
-            Name: "雷锋",
-            Address: "cloud@txthinking.com",
+            Name: "Jerry",
+            Address: "jerry@txthinking.com",
         },
     }
     fakefrom := &mail.Address{
-        Name: "雷锋",
-        Address: "bot@ym.txthinking.com",
+        Name: "Obama",
+        Address: "obama@whitehouse.gov",
     }
 
     msg := &xmail.Message{
@@ -50,7 +50,7 @@ func main(){
         FakeFrom: fakeFrom, // Optional, if u want, a fake from address
         To: to,
         Subject: "hello",
-        Body: "哈哈",
+        Body: "I <b>love</b> you.",
         Att: []string{
             "/etc/hosts",
         },
