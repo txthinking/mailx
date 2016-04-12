@@ -16,63 +16,58 @@ type SMTP struct{
 }
 
 // RFC 821,822,1869,2821
-func (m *SMTP)Send(msg *Message)(err error){
-    var client *smtp.Client
-    var auth smtp.Auth
-
-    var i int
-
-    client, err = smtp.Dial(m.Server + ":" + strconv.Itoa(m.Port))
+func (m *SMTP) Send(msg *Message) error {
+    client, err := smtp.Dial(m.Server + ":" + strconv.Itoa(m.Port))
     if err != nil {
-        return
+        return err
     }
     err = client.Hello(m.Server)
     if err != nil {
-        return
+        return err
     }
     if m.IsTLS{
         err = client.StartTLS(&tls.Config{ServerName: m.Server, InsecureSkipVerify: true})
         if err != nil {
-            return
+            return err
         }
     }
-    auth = smtp.PlainAuth("", m.UserName, m.Password, m.Server)
+    auth := smtp.PlainAuth("", m.UserName, m.Password, m.Server)
     err = client.Auth(auth)
     if err != nil {
-        return
+        return err
     }
     err = client.Mail(msg.From.Address)
     if err != nil {
-        return
+        return err
     }
-    for i, _ = range msg.To{
+    for i, _ := range msg.To{
         err = client.Rcpt(msg.To[i].Address)
         if err != nil {
-            return
+            return err
         }
     }
     var in io.WriteCloser
     in, err = client.Data()
     if err != nil {
-        return
+        return err
     }
     var r io.Reader
     r, err = msg.Reader()
     if err != nil {
-        return
+        return err
     }
     _, err = io.Copy(in, r)
     if err != nil {
-        return
+        return err
     }
     err = in.Close()
     if err != nil {
-        return
+        return err
     }
     err = client.Quit()
     if err != nil {
-        return
+        return err
     }
-    return
+    return nil
 }
 

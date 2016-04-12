@@ -1,14 +1,11 @@
-## xmail
+## xmail [![GoDoc](https://godoc.org/github.com/txthinking/xmail?status.svg)](https://godoc.org/github.com/txthinking/xmail) [![Build Status](https://drone.io/github.com/txthinking/xmail/status.png)](https://drone.io/github.com/txthinking/xmail/latest)
 
-A email library
+A SMTP/mailgun/etc mail library, allow to set a fake from address.
 
 ### Install
 ```
 $ go get github.com/txthinking/xmail
 ```
-### Doc
-
-[Doc](https://godoc.org/github.com/txthinking/xmail)
 
 ### Example
 
@@ -29,6 +26,7 @@ func main(){
         Password: "password",
         IsTLS: false,
     }
+
     from := &mail.Address{
         Name: "雷锋",
         Address: "bot@ym.txthinking.com",
@@ -39,8 +37,14 @@ func main(){
             Address: "cloud@txthinking.com",
         },
     }
-    msg := &Message{
+    fakefrom := &mail.Address{
+        Name: "雷锋",
+        Address: "bot@ym.txthinking.com",
+    }
+
+    msg := &xmail.Message{
         From: from,
+        FakeFrom: fakeFrom, // Optional, if u want, a fake from address
         To: to,
         Subject: "hello",
         Body: "哈哈",

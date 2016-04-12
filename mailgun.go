@@ -12,57 +12,53 @@ import(
 
 const MAILGUN_API_URL = "https://api.mailgun.net/v3"
 
-type Mailgun struct{
+type Mailgun struct {
     Domain string
     APIKey string
 }
 
-func (m *Mailgun)Send(msg *Message)(err error){
-    var rd io.Reader
-    rd, err = msg.Reader()
+func (m *Mailgun) Send(msg *Message) error {
+    msgr, err := msg.Reader()
     if err != nil {
-        return
+        return err
     }
-    var to []string = make([]string, len(msg.To))
-    var i int
-    for i, _ = range msg.To{
+    to := make([]string, len(msg.To))
+    for i, _ := range msg.To{
         to[i] = msg.To[i].String()
     }
-    var br io.Reader
-    var bd string = MakeBoundary()
-    br, err = ant.MultipartFormDataFromReader(
+    bdry := MakeBoundary()
+    body, err := ant.MultipartFormDataFromReader(
         map[string][]string{
             "to": []string{strings.Join(to, ",")},
         },
         map[string][]io.Reader{
-            "message": []io.Reader{rd},
+            "message": []io.Reader{msgr},
         },
-        bd,
+        bdry,
     )
 
-    var tr *http.Transport = &http.Transport{
+    tspt := &http.Transport{
         TLSClientConfig:    nil,
         DisableCompression: true,
     }
-    var client *http.Client = &http.Client{Transport: tr}
-    var r *http.Request
-    r, err = http.NewRequest("POST", MAILGUN_API_URL+"/"+m.Domain+"/messages.mime", br)
+    client := &http.Client{Transport: tspt}
+    r, err := http.NewRequest("POST", MAILGUN_API_URL+"/"+m.Domain+"/messages.mime", body)
     if err != nil{
-        return
+        return err
     }
-    r.Header.Add("Content-Type", "multipart/form-data; boundary="+bd)
+    r.Header.Add("Content-Type", "multipart/form-data; boundary="+bdry)
     r.SetBasicAuth("api", m.APIKey)
-    var res *http.Response
-    res, err = client.Do(r)
+
+    res, err := client.Do(r)
+    defer res.Body.Close()
     if res.StatusCode == http.StatusOK{
-        return
+        return nil
     }
-    var b []byte
-    b, err = ioutil.ReadAll(res.Body)
+    b, err := ioutil.ReadAll(res.Body)
     if err != nil{
-        return
+        return err
     }
-    res.Body.Close()
     err = errors.New(bytes.NewBuffer(b).String())
-    return
+    return err
 }
+
