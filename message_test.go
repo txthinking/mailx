@@ -1,24 +1,40 @@
 package xmail
 
-import(
-    "testing"
+import (
+	"net/mail"
+	"testing"
 )
 
-func TestMakeBoundary(t *testing.T){
-    s := MakeBoundary()
-    t.Log(s)
-}
+func TestMessage(t *testing.T) {
+	f := &mail.Address{
+		Name:    "Xmail",
+		Address: "739f35c64d-48cf45@inbox.mailtrap.io",
+	}
+	ff := &mail.Address{
+		Name:    "Obama",
+		Address: "fakename@fakeaddress.com",
+	}
+	ts := []*mail.Address{
+		&mail.Address{
+			Name:    "Cloud",
+			Address: "cloud@txthinking.com",
+		},
+	}
 
-func TestChunkSplit(t *testing.T){
-    s := `
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
-ccccccccccccccccccccccccccccccccccccccc
-`
-    s, err := ChunkSplit(s)
-    if err != nil{
-        t.Fatal(err)
-    }
-    t.Log(s)
+	m := &Message{
+		From:     f,
+		FakeFrom: ff,
+		To:       ts,
+		Subject:  "Xmail test smtp",
+		Body:     "哈哈",
+		Att: []string{
+			"/etc/hosts",
+		},
+	}
+	if _, err := m.String(); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := m.Reader(); err != nil {
+		t.Fatal(err)
+	}
 }
-

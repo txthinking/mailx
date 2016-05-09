@@ -9,8 +9,8 @@ import(
     "github.com/txthinking/xmail"
 )
 
-func Usage(){
-    var usage string = `Usage:
+func usage(){
+    usage := `Usage:
     -h         This help.
 
     -server    required smtp server
@@ -56,7 +56,7 @@ func main(){
     flag.StringVar(&att, "att", "", "attachment")
     flag.Parse()
     if h {
-        Usage()
+        usage()
         return
     }
 
@@ -65,7 +65,7 @@ func main(){
         log.Fatal(err)
         return
     }
-    tos := make([]*mail.Address, 0)
+    var tos []*mail.Address = make([]*mail.Address, 0)
     for _, s := range strings.Split(to,":"){
         s = strings.TrimSpace(s)
         if s != ""{
@@ -77,7 +77,7 @@ func main(){
             tos = append(tos, a)
         }
     }
-    atts := make([]string, 0)
+    var atts []string = make([]string, 0)
     for _, s := range strings.Split(att,":"){
         s = strings.TrimSpace(s)
         if s != ""{
