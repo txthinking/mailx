@@ -1,15 +1,18 @@
+// xmail (https://github.com/txthinking/xmail). Under the MIT license.
+
+// CLI of xmail.
 package main
 
-import(
+import (
     "flag"
-    "strings"
     "fmt"
-    "net/mail"
-    "log"
     "github.com/txthinking/xmail"
+    "log"
+    "net/mail"
+    "strings"
 )
 
-func usage(){
+func usage() {
     usage := `Usage:
     -h         This help.
 
@@ -27,7 +30,7 @@ func usage(){
 
 Creator: Cloud <cloud@txthinking.com>
 `
-        fmt.Print(usage)
+    fmt.Print(usage)
 }
 
 var h bool
@@ -42,7 +45,7 @@ var subject string
 var body string
 var att string
 
-func main(){
+func main() {
     flag.BoolVar(&h, "h", false, "usage")
     flag.StringVar(&server, "server", "", "SMTP server")
     flag.IntVar(&port, "port", 0, "SMTP PORT")
@@ -61,47 +64,46 @@ func main(){
     }
 
     f, err := mail.ParseAddress(from)
-    if err != nil{
+    if err != nil {
         log.Fatal(err)
         return
     }
-    var tos []*mail.Address = make([]*mail.Address, 0)
-    for _, s := range strings.Split(to,":"){
+    var tos = make([]*mail.Address, 0)
+    for _, s := range strings.Split(to, ":") {
         s = strings.TrimSpace(s)
-        if s != ""{
+        if s != "" {
             a, err := mail.ParseAddress(s)
-            if err != nil{
+            if err != nil {
                 log.Fatal(err)
                 return
             }
             tos = append(tos, a)
         }
     }
-    var atts []string = make([]string, 0)
-    for _, s := range strings.Split(att,":"){
+    var atts = make([]string, 0)
+    for _, s := range strings.Split(att, ":") {
         s = strings.TrimSpace(s)
-        if s != ""{
+        if s != "" {
             atts = append(atts, s)
         }
     }
 
     m := &xmail.Message{
-        From: f,
-        To: tos,
+        From:    f,
+        To:      tos,
         Subject: subject,
-        Body: body,
-        Att: atts,
+        Body:    body,
+        Att:     atts,
     }
     s := &xmail.SMTP{
-        Server: server,
-        Port: port,
+        Server:   server,
+        Port:     port,
         UserName: username,
         Password: password,
-        IsTLS: tls,
+        IsTLS:    tls,
     }
     err = s.Send(m)
-    if err != nil{
+    if err != nil {
         log.Fatal(err)
     }
 }
-

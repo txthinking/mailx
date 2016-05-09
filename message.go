@@ -1,3 +1,5 @@
+// xmail (https://github.com/txthinking/xmail). Under the MIT license.
+
 package xmail
 
 import (
