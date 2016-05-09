@@ -25,7 +25,7 @@ func Example() {
 			Address: "cloud@txthinking.com",
 		},
 	}
-	msg := &Message{
+	msg := &xmail.Message{
 		From:    from,
 		To:      tos,
 		Subject: "Xmail test smtp",
