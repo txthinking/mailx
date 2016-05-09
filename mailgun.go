@@ -1,15 +1,14 @@
-// xmail (https://github.com/txthinking/xmail). Under the MIT license.
-
 package xmail
 
 import (
 	"bytes"
 	"errors"
-	"github.com/txthinking/ant"
 	"io"
 	"io/ioutil"
 	"net/http"
 	"strings"
+
+	"github.com/txthinking/ant"
 )
 
 // MailgunAPIURL is the base url of maingun api
