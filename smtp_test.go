@@ -7,7 +7,7 @@ import (
 
 func TestSMTP(t *testing.T) {
 	s := &SMTP{
-		Server:   "mailtrap.io",
+		Server:   "smtp.mailtrap.io",
 		Port:     2525,
 		UserName: "e3f534cfe656f4",
 		Password: "b6e38ddc0f1e9d",
@@ -15,11 +15,7 @@ func TestSMTP(t *testing.T) {
 	}
 	f := &mail.Address{
 		Name:    "Xmail",
-		Address: "739f35c64d-48cf45@inbox.mailtrap.io",
-	}
-	ff := &mail.Address{
-		Name:    "Obama",
-		Address: "fakename@fakeaddress.com",
+		Address: "739f35c64d-9422d2@inbox.mailtrap.io",
 	}
 	ts := []*mail.Address{
 		{
@@ -43,11 +39,10 @@ func TestSMTP(t *testing.T) {
 	}
 
 	m = &Message{
-		From:     f,
-		FakeFrom: ff,
-		To:       ts,
-		Subject:  "Xmail test smtp",
-		Body:     "哈哈",
+		From:    f,
+		To:      ts,
+		Subject: "Xmail test smtp",
+		Body:    "哈哈",
 		Att: []string{
 			"/etc/hosts",
 		},

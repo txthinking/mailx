@@ -1,6 +1,7 @@
 ## xmail
-[![GoDoc](https://godoc.org/github.com/txthinking/xmail?status.svg)](https://godoc.org/github.com/txthinking/xmail)
+[![Go Report Card](https://goreportcard.com/badge/github.com/txthinking/xmail)](https://goreportcard.com/report/github.com/txthinking/xmail)
 [![Build Status](https://drone.io/github.com/txthinking/xmail/status.png)](https://drone.io/github.com/txthinking/xmail/latest)
+[![GoDoc](https://godoc.org/github.com/txthinking/xmail?status.svg)](https://godoc.org/github.com/txthinking/xmail)
 
 A SMTP/Mailgun/etc mail library, allow to set a fake from address.
 
