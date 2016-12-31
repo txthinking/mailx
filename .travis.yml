@@ -6,4 +6,5 @@ go:
   - 1.7.x
 install:
 script:
-  - go get -v
+  - go get -v .
+  - go test  -v .
