@@ -6,7 +6,12 @@ import (
 )
 
 func TestMailgun(t *testing.T) {
-	k := ""
+	const k := ""
+
+	if k == ""{
+		return
+	}
+
 	s := &Mailgun{
 		"sandbox29318.mailgun.org",
 		k,
@@ -38,7 +43,7 @@ func TestMailgun(t *testing.T) {
 	}
 	err := s.Send(m)
 	if err != nil {
-		//t.Fatal(err)
+		t.Fatal(err)
 	}
 
 	m = &Message{
@@ -53,6 +58,6 @@ func TestMailgun(t *testing.T) {
 	}
 	err = s.Send(m)
 	if err != nil {
-		//t.Fatal(err)
+		t.Fatal(err)
 	}
 }
