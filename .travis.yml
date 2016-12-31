@@ -1,0 +1,9 @@
+language: php
+sudo: false
+go:
+  - 1.5.x
+  - 1.6.x
+  - 1.7.x
+install:
+script:
+  - go get -v
