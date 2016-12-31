@@ -6,9 +6,9 @@ import (
 )
 
 func TestMailgun(t *testing.T) {
-	const k := ""
+	const k = ""
 
-	if k == ""{
+	if k == "" {
 		return
 	}
 

@@ -3,5 +3,4 @@ sudo: false
 go:
 install:
 script:
-  - go get -v .
   - go test  -v .
