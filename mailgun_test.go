@@ -21,7 +21,7 @@ func TestMailgun(t *testing.T) {
 		Address: "fakename@fakeaddress.com",
 	}
 	ts := []*mail.Address{
-		&mail.Address{
+		{
 			Name:    "Cloud",
 			Address: "cloud@txthinking.com",
 		},

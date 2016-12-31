@@ -33,10 +33,10 @@ func (m *Mailgun) Send(msg *Message) error {
 	bdry := makeBoundary()
 	body, err := ant.MultipartFormDataFromReader(
 		map[string][]string{
-			"to": []string{strings.Join(to, ",")},
+			"to": {strings.Join(to, ",")},
 		},
 		map[string][]io.Reader{
-			"message": []io.Reader{msgr},
+			"message": {msgr},
 		},
 		bdry,
 	)

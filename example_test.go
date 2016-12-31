@@ -1,9 +1,10 @@
 package xmail_test
 
 import (
-	"github.com/txthinking/xmail"
 	"log"
 	"net/mail"
+
+	"github.com/txthinking/xmail"
 )
 
 func Example() {
@@ -20,7 +21,7 @@ func Example() {
 		Address: "739f35c64d-48cf45@inbox.mailtrap.io",
 	}
 	tos := []*mail.Address{
-		&mail.Address{
+		{
 			Name:    "Cloud",
 			Address: "cloud@txthinking.com",
 		},
