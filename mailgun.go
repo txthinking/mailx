@@ -54,6 +54,9 @@ func (m *Mailgun) Send(msg *Message) error {
 	r.SetBasicAuth("api", m.APIKey)
 
 	res, err := client.Do(r)
+	if err != nil {
+		return err
+	}
 	defer res.Body.Close()
 	if res.StatusCode == http.StatusOK {
 		return nil
