@@ -1,14 +1,14 @@
-package xmail_test
+package mailx_test
 
 import (
 	"log"
 	"net/mail"
 
-	"github.com/txthinking/xmail"
+	"github.com/txthinking/mailx"
 )
 
 func Example() {
-	server := &xmail.SMTP{
+	server := &mailx.SMTP{
 		Server:   "mailtrap.io",
 		Port:     2525,
 		UserName: "e3f534cfe656f4",
@@ -16,22 +16,20 @@ func Example() {
 		IsTLS:    false,
 	}
 
-	from := &mail.Address{
-		Name:    "Xmail",
-		Address: "739f35c64d-48cf45@inbox.mailtrap.io",
-	}
-	tos := []*mail.Address{
-		{
-			Name:    "Cloud",
-			Address: "cloud@txthinking.com",
+	msg := &mailx.Message{
+		From: &mail.Address{
+			Name:    "mailx",
+			Address: "739f35c64d-48cf45@inbox.mailtrap.io",
 		},
-	}
-	msg := &xmail.Message{
-		From:    from,
-		To:      tos,
-		Subject: "Xmail test smtp",
+		To: []*mail.Address{
+			{
+				Name:    "Cloud",
+				Address: "cloud@txthinking.com",
+			},
+		},
+		Subject: "Test",
 		Body:    "哈哈",
-		Att: []string{
+		Attachment: []string{
 			"/etc/hosts",
 		},
 	}

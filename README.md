@@ -1,13 +1,13 @@
-## xmail
-[![Build Status](https://travis-ci.org/txthinking/xmail.svg?branch=master)](https://travis-ci.org/txthinking/xmail)
-[![Go Report Card](https://goreportcard.com/badge/github.com/txthinking/xmail)](https://goreportcard.com/report/github.com/txthinking/xmail)
-[![GoDoc](https://godoc.org/github.com/txthinking/xmail?status.svg)](https://godoc.org/github.com/txthinking/xmail)
+## mailx
+[![Build Status](https://travis-ci.org/txthinking/mailx.svg?branch=master)](https://travis-ci.org/txthinking/mailx)
+[![Go Report Card](https://goreportcard.com/badge/github.com/txthinking/mailx)](https://goreportcard.com/report/github.com/txthinking/mailx)
+[![GoDoc](https://godoc.org/github.com/txthinking/mailx?status.svg)](https://godoc.org/github.com/txthinking/mailx)
 
 A SMTP/Mailgun/etc mail library, allow to set a fake from address.
 
 ### Install
 ```
-$ go get github.com/txthinking/xmail
+$ go get github.com/txthinking/mailx
 ```
 
 ### Example
@@ -18,11 +18,11 @@ package main
 import(
     "log"
     "net/mail"
-    "github.com/txthinking/xmail"
+    "github.com/txthinking/mailx"
 )
 
 func main(){
-    smtp := &xmail.SMTP{
+    smtp := &mailx.SMTP{
         Server: "smtp.example.com",
         Port: 25,
         UserName: "tom@txthinking.com",
@@ -45,7 +45,7 @@ func main(){
         Address: "obama@whitehouse.gov",
     }
 
-    msg := &xmail.Message{
+    msg := &mailx.Message{
         From: from,
         FakeFrom: fakeFrom, // Optional, if u want, a fake from address
         To: to,

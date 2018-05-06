@@ -1,4 +1,4 @@
-package xmail
+package mailx
 
 import (
 	"crypto/tls"

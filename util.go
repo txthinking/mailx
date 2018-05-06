@@ -1,8 +1,7 @@
-package xmail
+package mailx
 
 import (
 	"bytes"
-	"github.com/txthinking/ant"
 	"io"
 	"math/rand"
 	"strconv"
@@ -13,7 +12,6 @@ import (
 func makeBoundary() string {
 	b := strconv.FormatInt(time.Now().UnixNano(), 10)
 	b += strconv.FormatInt(rand.New(rand.NewSource(time.Now().UnixNano())).Int63(), 10)
-	b = ant.MD5(b)
 	return b
 }
 
