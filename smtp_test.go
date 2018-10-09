@@ -8,10 +8,10 @@ import (
 func TestSMTP(t *testing.T) {
 	s := &SMTP{
 		Server:   "smtp.mailtrap.io",
-		Port:     2525,
+		Port:     465,
 		UserName: "e3f534cfe656f4",
 		Password: "b6e38ddc0f1e9d",
-		IsTLS:    false,
+		IsTLS:    true,
 	}
 
 	m := &Message{

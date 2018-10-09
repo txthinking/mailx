@@ -27,7 +27,7 @@ func (m *SMTP) Send(msg *Message) error {
 		return err
 	}
 	if m.IsTLS {
-		err = client.StartTLS(&tls.Config{ServerName: m.Server, InsecureSkipVerify: true})
+		err = client.StartTLS(&tls.Config{ServerName: m.Server, InsecureSkipVerify: false})
 		if err != nil {
 			return err
 		}
