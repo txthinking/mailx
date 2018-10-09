@@ -16,7 +16,7 @@ func MakeBoundary() string {
 }
 
 // Chunk data using RFC 2045.
-func chunkSplit(s string) (string, error) {
+func ChunkSplit(s string) (string, error) {
 	const LENTH = 76
 	var data = make([]byte, 0)
 	var block = make([]byte, LENTH)

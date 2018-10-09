@@ -59,7 +59,7 @@ func (m *Message) body() (string, error) {
 		body += fmt.Sprintf("--%s\r\n", m.boundaryMixed)
 	}
 
-	content, err := chunkSplit(base64.StdEncoding.EncodeToString(bytes.NewBufferString(m.Body).Bytes()))
+	content, err := ChunkSplit(base64.StdEncoding.EncodeToString(bytes.NewBufferString(m.Body).Bytes()))
 	if err != nil {
 		return "", nil
 	}
@@ -82,7 +82,7 @@ func (m *Message) body() (string, error) {
 				return "", err
 			}
 			name := filepath.Base(s)
-			data, err := chunkSplit(base64.StdEncoding.EncodeToString(b))
+			data, err := ChunkSplit(base64.StdEncoding.EncodeToString(b))
 			if err != nil {
 				return "", err
 			}

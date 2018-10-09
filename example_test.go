@@ -9,14 +9,13 @@ import (
 
 func Example() {
 	server := &mailx.SMTP{
-		Server:   "mailtrap.io",
-		Port:     2525,
+		Server:   "smtp.mailtrap.io",
+		Port:     465,
 		UserName: "e3f534cfe656f4",
 		Password: "b6e38ddc0f1e9d",
-		IsTLS:    false,
 	}
 
-	msg := &mailx.Message{
+	message := &mailx.Message{
 		From: &mail.Address{
 			Name:    "mailx",
 			Address: "739f35c64d-48cf45@inbox.mailtrap.io",
@@ -27,14 +26,14 @@ func Example() {
 				Address: "cloud@txthinking.com",
 			},
 		},
-		Subject: "Test",
-		Body:    "哈哈",
+		Subject: "Hello",
+		Body:    "I <b>love</b> U.",
 		Attachment: []string{
 			"/etc/hosts",
 		},
 	}
 
-	if err := server.Send(msg); err != nil {
+	if err := server.Send(message); err != nil {
 		log.Fatal(err)
 	}
 }

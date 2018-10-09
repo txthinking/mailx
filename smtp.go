@@ -13,7 +13,6 @@ type SMTP struct {
 	Port     int
 	UserName string
 	Password string
-	IsTLS    bool
 }
 
 // Send mail by smtp. RFC 821,822,1869,2821.
@@ -26,11 +25,9 @@ func (m *SMTP) Send(msg *Message) error {
 	if err != nil {
 		return err
 	}
-	if m.IsTLS {
-		err = client.StartTLS(&tls.Config{ServerName: m.Server, InsecureSkipVerify: false})
-		if err != nil {
-			return err
-		}
+	err = client.StartTLS(&tls.Config{ServerName: m.Server, InsecureSkipVerify: false})
+	if err != nil {
+		return err
 	}
 	auth := smtp.PlainAuth("", m.UserName, m.Password, m.Server)
 	err = client.Auth(auth)

@@ -11,7 +11,6 @@ func TestSMTP(t *testing.T) {
 		Port:     465,
 		UserName: "e3f534cfe656f4",
 		Password: "b6e38ddc0f1e9d",
-		IsTLS:    true,
 	}
 
 	m := &Message{
