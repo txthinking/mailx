@@ -26,8 +26,8 @@ type Message struct {
 }
 
 func (m *Message) initBoundary() {
-	m.boundaryAlternative = "a" + makeBoundary()
-	m.boundaryMixed = "m" + makeBoundary()
+	m.boundaryAlternative = "a" + MakeBoundary()
+	m.boundaryMixed = "m" + MakeBoundary()
 }
 
 func (m *Message) header() (string, error) {

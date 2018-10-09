@@ -9,7 +9,7 @@ import (
 )
 
 // Create boundary for MIME data.
-func makeBoundary() string {
+func MakeBoundary() string {
 	b := strconv.FormatInt(time.Now().UnixNano(), 10)
 	b += strconv.FormatInt(rand.New(rand.NewSource(time.Now().UnixNano())).Int63(), 10)
 	return b
