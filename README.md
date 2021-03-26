@@ -43,3 +43,11 @@ if err := server.Send(message); err != nil {
     log.Fatal(err)
 }
 ```
+
+## Author
+
+A project by [txthinking](https://www.txthinking.com)
+
+## License
+
+Licensed under The MIT License
