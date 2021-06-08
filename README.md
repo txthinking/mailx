@@ -5,6 +5,8 @@
 
 A lightweight SMTP mail library
 
+❤️ A project by [txthinking.com](https://www.txthinking.com)
+
 ### Install
 
 ```
@@ -43,10 +45,6 @@ if err := server.Send(message); err != nil {
     log.Fatal(err)
 }
 ```
-
-## Author
-
-A project by [txthinking](https://www.txthinking.com)
 
 ## License
 
