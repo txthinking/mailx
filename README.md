@@ -3,11 +3,6 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/txthinking/mailx)](https://goreportcard.com/report/github.com/txthinking/mailx)
 [![GoDoc](https://godoc.org/github.com/txthinking/mailx?status.svg)](https://godoc.org/github.com/txthinking/mailx)
 
-[🗣 News](https://t.me/txthinking_news)
-[💬 Chat](https://join.txthinking.com)
-[🩸 Youtube](https://www.youtube.com/txthinking) 
-[❤️ Sponsor](https://github.com/sponsors/txthinking)
-
 A lightweight SMTP mail library
 
 ❤️ A project by [txthinking.com](https://www.txthinking.com)
